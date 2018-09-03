@@ -1,0 +1,13 @@
+Source: ros-lunar-goal-passer
+Section: misc
+Priority: extra
+Maintainer: Martin Günther <martin.guenther@dfki.de>
+Build-Depends: debhelper (>= 9.0.0), ros-lunar-catkin, ros-lunar-costmap-2d, ros-lunar-nav-core, ros-lunar-pluginlib, ros-lunar-roscpp
+Homepage: http://wiki.ros.org/goal_passer
+Standards-Version: 3.9.2
+
+Package: ros-lunar-goal-passer
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-lunar-costmap-2d, ros-lunar-nav-core, ros-lunar-pluginlib, ros-lunar-roscpp
+Description: A global planner plugin for move_base that simply passes the target pose on as a global plan.
+ Useful for debugging local planners.
