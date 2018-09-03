@@ -1,0 +1,12 @@
+Source: ros-lunar-pose-base-controller
+Section: misc
+Priority: extra
+Maintainer: Martin Günther <martin.guenther@dfki.de>
+Build-Depends: debhelper (>= 9.0.0), ros-lunar-actionlib, ros-lunar-catkin, ros-lunar-geometry-msgs, ros-lunar-move-base-msgs, ros-lunar-nav-msgs, ros-lunar-roscpp, ros-lunar-tf
+Homepage: http://wiki.ros.org/pose_base_controller
+Standards-Version: 3.9.2
+
+Package: ros-lunar-pose-base-controller
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-lunar-actionlib, ros-lunar-geometry-msgs, ros-lunar-move-base-msgs, ros-lunar-nav-msgs, ros-lunar-roscpp, ros-lunar-tf
+Description: A node that provides the move_base action server interface, but instead of planning simply drives towards the target pose using a control-based approach.
