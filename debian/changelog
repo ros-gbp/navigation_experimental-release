@@ -1,8 +1,0 @@
-ros-melodic-pose-base-controller (0.2.0-0stretch) stretch; urgency=high
-
-  * Initial release into indigo, kinetic, lunar and melodic
-  * Contributors: Martin Günther, David V. Lu!!, Dave Hershberger, Jon Binney, Eitan Marder-Eppstein
-
- -- Martin Günther <martin.guenther@dfki.de>  Sun, 02 Sep 2018 22:00:00 -0000
-
-
