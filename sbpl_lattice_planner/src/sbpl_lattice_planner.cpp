@@ -36,17 +36,18 @@
 *********************************************************************/
 
 #include <sbpl_lattice_planner/sbpl_lattice_planner.h>
-#include <pluginlib/class_list_macros.h>
+#include <pluginlib/class_list_macros.hpp>
 #include <nav_msgs/Path.h>
 #include <sbpl_lattice_planner/SBPLLatticePlannerStats.h>
 
 #include <costmap_2d/inflation_layer.h>
+#include <tf2/LinearMath/Quaternion.h>
 
 using namespace std;
 using namespace ros;
 
 
-PLUGINLIB_DECLARE_CLASS(sbpl_latice_planner, SBPLLatticePlanner, sbpl_lattice_planner::SBPLLatticePlanner, nav_core::BaseGlobalPlanner);
+PLUGINLIB_EXPORT_CLASS(sbpl_lattice_planner::SBPLLatticePlanner, nav_core::BaseGlobalPlanner)
 
 namespace sbpl_lattice_planner{
 
@@ -387,7 +388,7 @@ bool SBPLLatticePlanner::makePlan(const geometry_msgs::PoseStamped& start,
     pose.pose.position.y = sbpl_path[i].y + costmap_ros_->getCostmap()->getOriginY();
     pose.pose.position.z = start.pose.position.z;
 
-    tf::Quaternion temp;
+    tf2::Quaternion temp;
     temp.setRPY(0,0,sbpl_path[i].theta);
     pose.pose.orientation.x = temp.getX();
     pose.pose.orientation.y = temp.getY();
