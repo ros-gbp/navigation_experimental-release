@@ -2,6 +2,9 @@
 Changelog for package goal_passer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.3.1 (2018-09-05)
+------------------
+
 0.3.0 (2018-09-04)
 ------------------
 * Use non deprecated pluginlib macro + headers
