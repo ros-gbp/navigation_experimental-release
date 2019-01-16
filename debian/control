@@ -1,0 +1,12 @@
+Source: ros-indigo-navigation-experimental
+Section: misc
+Priority: extra
+Maintainer: Martin Günther <martin.guenther@dfki.de>
+Build-Depends: debhelper (>= 9.0.0), ros-indigo-catkin
+Homepage: http://wiki.ros.org/navigation_experimental
+Standards-Version: 3.9.2
+
+Package: ros-indigo-navigation-experimental
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-indigo-assisted-teleop, ros-indigo-goal-passer, ros-indigo-pose-base-controller, ros-indigo-pose-follower, ros-indigo-sbpl-lattice-planner, ros-indigo-sbpl-recovery, ros-indigo-twist-recovery
+Description: A collection of navigation plugins and tools: Various recovery behaviors, local and global planner plugins for move_base, a teleop filter for obstacle avoidance, a simple control-based move_base replacement etc.
