@@ -1,0 +1,12 @@
+Source: ros-lunar-sbpl-lattice-planner
+Section: misc
+Priority: extra
+Maintainer: Martin Günther <martin.guenther@dfki.de>
+Build-Depends: debhelper (>= 9.0.0), ros-lunar-catkin, ros-lunar-costmap-2d, ros-lunar-geometry-msgs, ros-lunar-message-generation, ros-lunar-nav-core, ros-lunar-nav-msgs, ros-lunar-pluginlib, ros-lunar-roscpp, ros-lunar-sbpl, ros-lunar-tf2
+Homepage: http://wiki.ros.org/sbpl_lattice_planner
+Standards-Version: 3.9.2
+
+Package: ros-lunar-sbpl-lattice-planner
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-lunar-costmap-2d, ros-lunar-geometry-msgs, ros-lunar-message-runtime, ros-lunar-nav-core, ros-lunar-nav-msgs, ros-lunar-pluginlib, ros-lunar-roscpp, ros-lunar-sbpl, ros-lunar-tf2
+Description: The sbpl_lattice_planner is a global planner plugin for move_base and wraps the SBPL search-based planning library.
