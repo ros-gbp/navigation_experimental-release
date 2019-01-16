@@ -2,6 +2,11 @@
 Changelog for package assisted_teleop
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.3.2 (2019-01-16)
+------------------
+* Fix some includes
+* Contributors: Martin Günther
+
 0.3.1 (2018-09-05)
 ------------------
 * assisted_teleop: Don't link against Eigen_LIBRARIES

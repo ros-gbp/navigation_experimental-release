@@ -2,6 +2,9 @@
 Changelog for package twist_recovery
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.3.2 (2019-01-16)
+------------------
+
 0.3.1 (2018-09-05)
 ------------------
 * twist_recovery: Add missing dependency
