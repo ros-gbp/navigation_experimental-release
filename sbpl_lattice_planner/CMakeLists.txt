@@ -5,7 +5,7 @@ project(sbpl_lattice_planner)
 # Find dependencies
 ##############################################################################
 
-set(THIS_PACKAGE_ROS_DEPS roscpp costmap_2d nav_core pluginlib 
+set(THIS_PACKAGE_ROS_DEPS roscpp costmap_2d nav_core pluginlib tf2
   geometry_msgs nav_msgs)
 find_package(catkin REQUIRED COMPONENTS
   ${THIS_PACKAGE_ROS_DEPS} message_generation)
@@ -30,7 +30,7 @@ catkin_package(
   INCLUDE_DIRS include
   LIBRARIES ${PROJECT_NAME}
   CATKIN_DEPENDS ${THIS_PACKAGE_ROS_DEPS} message_runtime
-  DEPENDS
+  DEPENDS SBPL
 )
 
 ##############################################################################
@@ -40,6 +40,7 @@ catkin_package(
 add_library(${PROJECT_NAME} src/sbpl_lattice_planner.cpp)
 target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES} ${SBPL_LIBRARIES})
 add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_compile_options(${PROJECT_NAME} PUBLIC "-Wno-terminate")  # suppress warning from included SBPL header
 
 ##############################################################################
 # Install
