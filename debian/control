@@ -1,0 +1,12 @@
+Source: ros-lunar-pose-follower
+Section: misc
+Priority: extra
+Maintainer: Martin Günther <martin.guenther@dfki.de>
+Build-Depends: debhelper (>= 9.0.0), ros-lunar-base-local-planner, ros-lunar-catkin, ros-lunar-costmap-2d, ros-lunar-nav-core, ros-lunar-nav-msgs, ros-lunar-pluginlib, ros-lunar-roscpp, ros-lunar-tf
+Homepage: http://wiki.ros.org/pose_follower
+Standards-Version: 3.9.2
+
+Package: ros-lunar-pose-follower
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-lunar-base-local-planner, ros-lunar-costmap-2d, ros-lunar-nav-core, ros-lunar-nav-msgs, ros-lunar-pluginlib, ros-lunar-roscpp, ros-lunar-tf
+Description: A implementation of a local planner that attempts to follow a plan as closely as possible.
