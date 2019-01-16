@@ -1,0 +1,12 @@
+Source: ros-melodic-navigation-experimental
+Section: misc
+Priority: extra
+Maintainer: Martin Günther <martin.guenther@dfki.de>
+Build-Depends: debhelper (>= 9.0.0), ros-melodic-catkin
+Homepage: http://wiki.ros.org/navigation_experimental
+Standards-Version: 3.9.2
+
+Package: ros-melodic-navigation-experimental
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-melodic-assisted-teleop, ros-melodic-goal-passer, ros-melodic-pose-base-controller, ros-melodic-pose-follower, ros-melodic-sbpl-lattice-planner, ros-melodic-sbpl-recovery, ros-melodic-twist-recovery
+Description: A collection of navigation plugins and tools: Various recovery behaviors, local and global planner plugins for move_base, a teleop filter for obstacle avoidance, a simple control-based move_base replacement etc.
