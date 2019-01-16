@@ -1,0 +1,12 @@
+Source: ros-kinetic-sbpl-lattice-planner
+Section: misc
+Priority: extra
+Maintainer: Martin Günther <martin.guenther@dfki.de>
+Build-Depends: debhelper (>= 9.0.0), ros-kinetic-catkin, ros-kinetic-costmap-2d, ros-kinetic-geometry-msgs, ros-kinetic-message-generation, ros-kinetic-nav-core, ros-kinetic-nav-msgs, ros-kinetic-pluginlib, ros-kinetic-roscpp, ros-kinetic-sbpl, ros-kinetic-tf2
+Homepage: http://wiki.ros.org/sbpl_lattice_planner
+Standards-Version: 3.9.2
+
+Package: ros-kinetic-sbpl-lattice-planner
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-kinetic-costmap-2d, ros-kinetic-geometry-msgs, ros-kinetic-message-runtime, ros-kinetic-nav-core, ros-kinetic-nav-msgs, ros-kinetic-pluginlib, ros-kinetic-roscpp, ros-kinetic-sbpl, ros-kinetic-tf2
+Description: The sbpl_lattice_planner is a global planner plugin for move_base and wraps the SBPL search-based planning library.
