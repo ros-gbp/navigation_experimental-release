@@ -42,9 +42,6 @@
 #include <base_local_planner/trajectory_planner_ros.h>
 #include <boost/thread.hpp>
 #include <Eigen/Core>
-#include <tf2_ros/buffer.h>
-#include <tf2_ros/transform_listener.h>
-
 
 namespace assisted_teleop {
   class AssistedTeleop {
@@ -55,8 +52,7 @@ namespace assisted_teleop {
       void velCB(const geometry_msgs::TwistConstPtr& vel);
       void controlLoop();
 
-      tf2_ros::Buffer tf_;
-      tf2_ros::TransformListener tfl_;
+      tf::TransformListener tf_;
       costmap_2d::Costmap2DROS costmap_ros_;
       double controller_frequency_;
       base_local_planner::TrajectoryPlannerROS planner_;

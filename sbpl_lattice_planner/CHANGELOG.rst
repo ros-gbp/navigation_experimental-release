@@ -2,23 +2,15 @@
 Changelog for package sbpl_lattice_planner
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.3.2 (2019-01-16)
+0.2.1 (2019-01-16)
 ------------------
 * Reinit on map size, footprint and costmap changes
 * Add warning when cost_scaling_factor is too large
   Also see `#33 <https://github.com/ros-planning/navigation_experimental/issues/33>`_.
+* Ignore SBPL compile warning (`#31 <https://github.com/ros-planning/navigation_experimental/issues/31>`_)
 * Fix example config for TF2 (`#30 <https://github.com/ros-planning/navigation_experimental/issues/30>`_)
-* sbpl_lattice_planner: Add missing DEPENDS SBPL
+* Update to tf2, add dependency
 * Contributors: Jonathan Meyer, Martin Günther
-
-0.3.1 (2018-09-05)
-------------------
-
-0.3.0 (2018-09-04)
-------------------
-* sbpl_lattice_planner: Update to tf2, add dependency
-* Use non deprecated pluginlib macro + headers
-* Contributors: Martin Günther
 
 0.2.0 (2018-09-03)
 ------------------

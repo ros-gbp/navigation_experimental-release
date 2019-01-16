@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>twist_recovery</name>
-  <version>0.3.2</version>
+  <version>0.2.1</version>
   <description>
     A recovery behavior that performs a particular used-defined twist.
   </description>
@@ -19,8 +19,6 @@
   <depend>geometry_msgs</depend>
   <depend>nav_core</depend>
   <depend>pluginlib</depend>
-  <depend>tf2_geometry_msgs</depend>  <!-- required whenever tf2/utils.h is included: https://github.com/ros/geometry2/issues/275 -->
-  <depend>tf2_ros</depend>
 
   <export>
     <nav_core plugin="${prefix}/twist_plugin.xml" />

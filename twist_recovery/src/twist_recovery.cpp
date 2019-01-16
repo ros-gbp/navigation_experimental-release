@@ -38,7 +38,6 @@
 #include <twist_recovery/twist_recovery.h>
 #include <pluginlib/class_list_macros.hpp>
 #include <tf/transform_datatypes.h>
-#include <tf2/utils.h>
 
 // register as a RecoveryBehavior plugin
 PLUGINLIB_EXPORT_CLASS(twist_recovery::TwistRecovery, nav_core::RecoveryBehavior)
@@ -61,7 +60,7 @@ TwistRecovery::~TwistRecovery ()
   delete world_model_;
 }
 
-void TwistRecovery::initialize (std::string name, tf2_ros::Buffer* tf,
+void TwistRecovery::initialize (std::string name, tf::TransformListener* tf,
                                 cmap::Costmap2DROS* global_cmap, cmap::Costmap2DROS* local_cmap)
 {
   ROS_ASSERT(!initialized_);
@@ -173,12 +172,12 @@ gm::Twist TwistRecovery::scaleGivenAccelerationLimits (const gm::Twist& twist, c
 // Get pose in local costmap frame
 gm::Pose2D TwistRecovery::getCurrentLocalPose () const
 {
-  gm::PoseStamped p;
+  tf::Stamped<tf::Pose> p;
   local_costmap_->getRobotPose(p);
   gm::Pose2D pose;
-  pose.x = p.pose.position.x;
-  pose.y = p.pose.position.y;
-  pose.theta = tf2::getYaw(p.pose.orientation);
+  pose.x = p.getOrigin().x();
+  pose.y = p.getOrigin().y();
+  pose.theta = tf::getYaw(p.getRotation());
   return pose;
 }
 

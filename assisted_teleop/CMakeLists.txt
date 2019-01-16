@@ -6,7 +6,7 @@ project(assisted_teleop)
 ##############################################################################
 
 set(THIS_PACKAGE_ROS_DEPS
-  tf2_ros
+  tf
   costmap_2d
   roscpp
   roslib
