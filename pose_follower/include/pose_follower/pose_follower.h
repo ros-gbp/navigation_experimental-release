@@ -44,6 +44,7 @@
 #include <tf2_ros/buffer.h>
 #include <nav_core/base_local_planner.h>
 #include <costmap_2d/costmap_2d_ros.h>
+#include <geometry_msgs/Pose.h>
 #include <geometry_msgs/PoseStamped.h>
 #include <geometry_msgs/Twist.h>
 #include <nav_msgs/Odometry.h>
@@ -73,10 +74,12 @@ namespace pose_follower {
 
       void odomCallback(const nav_msgs::Odometry::ConstPtr& msg);
       bool stopped();
+      void publishPlan(const std::vector<geometry_msgs::PoseStamped> &path, const ros::Publisher &pub);
 
       tf2_ros::Buffer* tf_;
       costmap_2d::Costmap2DROS* costmap_ros_;
       ros::Publisher vel_pub_;
+      ros::Publisher global_plan_pub_;
       double K_trans_, K_rot_, tolerance_trans_, tolerance_rot_;
       double tolerance_timeout_;
       double max_vel_lin_, max_vel_th_;
