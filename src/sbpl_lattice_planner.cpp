@@ -49,6 +49,13 @@ using namespace ros;
 
 PLUGINLIB_EXPORT_CLASS(sbpl_lattice_planner::SBPLLatticePlanner, nav_core::BaseGlobalPlanner)
 
+namespace geometry_msgs {
+  bool operator== (const Point &p1, const Point &p2)
+  {
+    return p1.x == p2.x && p1.y == p2.y && p1.z == p2.z;
+  }
+}
+
 namespace sbpl_lattice_planner{
 
 class LatticeSCQ : public StateChangeQuery{
@@ -90,8 +97,7 @@ SBPLLatticePlanner::SBPLLatticePlanner(std::string name, costmap_2d::Costmap2DRO
 void SBPLLatticePlanner::initialize(std::string name, costmap_2d::Costmap2DROS* costmap_ros){
   if(!initialized_){
     ros::NodeHandle private_nh("~/"+name);
-    ros::NodeHandle nh(name);
-    
+
     ROS_INFO("Name is %s", name.c_str());
 
     private_nh.param("planner_type", planner_type_, string("ARAPlanner"));
@@ -112,10 +118,11 @@ void SBPLLatticePlanner::initialize(std::string name, costmap_2d::Costmap2DROS* 
     inscribed_inflated_obstacle_ = lethal_obstacle_-1;
     sbpl_cost_multiplier_ = (unsigned char) (costmap_2d::INSCRIBED_INFLATED_OBSTACLE/inscribed_inflated_obstacle_ + 1);
     ROS_DEBUG("SBPL: lethal: %uz, inscribed inflated: %uz, multiplier: %uz",lethal_obstacle,inscribed_inflated_obstacle_,sbpl_cost_multiplier_);
-    
+
+    name_ = name;
     costmap_ros_ = costmap_ros;
 
-    std::vector<geometry_msgs::Point> footprint = costmap_ros_->getRobotFootprint();
+    footprint_ = costmap_ros_->getRobotFootprint();
 
     if ("XYThetaLattice" == environment_type_){
       ROS_DEBUG("Using a 3D costmap for theta lattice\n");
@@ -126,33 +133,34 @@ void SBPLLatticePlanner::initialize(std::string name, costmap_2d::Costmap2DROS* 
       exit(1);
     }
 
-    // check if the costmap has an inflation layer
-    // Warning: footprint updates after initialization are not supported here
-    unsigned char cost_possibly_circumscribed_tresh = 0;
-    for(std::vector<boost::shared_ptr<costmap_2d::Layer> >::const_iterator layer = costmap_ros_->getLayeredCostmap()->getPlugins()->begin();
-        layer != costmap_ros_->getLayeredCostmap()->getPlugins()->end();
-        ++layer) {
-      boost::shared_ptr<costmap_2d::InflationLayer> inflation_layer = boost::dynamic_pointer_cast<costmap_2d::InflationLayer>(*layer);
-      if (!inflation_layer) continue;
+    circumscribed_cost_ = computeCircumscribedCost();
 
-      cost_possibly_circumscribed_tresh = inflation_layer->computeCost(costmap_ros_->getLayeredCostmap()->getCircumscribedRadius() / costmap_ros_->getCostmap()->getResolution());
+    if (circumscribed_cost_ == 0) {
+      // Unfortunately, the inflation_radius is not taken into account by
+      // inflation_layer->computeCost(). If inflation_radius is smaller than
+      // the circumscribed radius, SBPL will ignore some obstacles, but we
+      // cannot detect this problem. If the cost_scaling_factor is too large,
+      // SBPL won't run into obstacles, but will always perform an expensive
+      // footprint check, no matter how far the nearest obstacle is.
+      ROS_WARN("The costmap value at the robot's circumscribed radius (%f m) is 0.", costmap_ros_->getLayeredCostmap()->getCircumscribedRadius());
+      ROS_WARN("SBPL performance will suffer.");
+      ROS_WARN("Please decrease the costmap's cost_scaling_factor.");
     }
-
     if(!env_->SetEnvParameter("cost_inscribed_thresh",costMapCostToSBPLCost(costmap_2d::INSCRIBED_INFLATED_OBSTACLE))){
       ROS_ERROR("Failed to set cost_inscribed_thresh parameter");
       exit(1);
     }
-    if(!env_->SetEnvParameter("cost_possibly_circumscribed_thresh", costMapCostToSBPLCost(cost_possibly_circumscribed_tresh))){
+    if(!env_->SetEnvParameter("cost_possibly_circumscribed_thresh", circumscribed_cost_)){
       ROS_ERROR("Failed to set cost_possibly_circumscribed_thresh parameter");
       exit(1);
     }
     int obst_cost_thresh = costMapCostToSBPLCost(costmap_2d::LETHAL_OBSTACLE);
     vector<sbpl_2Dpt_t> perimeterptsV;
-    perimeterptsV.reserve(footprint.size());
-    for (size_t ii(0); ii < footprint.size(); ++ii) {
+    perimeterptsV.reserve(footprint_.size());
+    for (size_t ii(0); ii < footprint_.size(); ++ii) {
       sbpl_2Dpt_t pt;
-      pt.x = footprint[ii].x;
-      pt.y = footprint[ii].y;
+      pt.x = footprint_[ii].x;
+      pt.y = footprint_[ii].y;
       perimeterptsV.push_back(pt);
     }
 
@@ -167,6 +175,8 @@ void SBPLLatticePlanner::initialize(std::string name, costmap_2d::Costmap2DROS* 
                                 perimeterptsV, costmap_ros_->getCostmap()->getResolution(), nominalvel_mpersecs,
                                 timetoturn45degsinplace_secs, obst_cost_thresh,
                                 primitive_filename_.c_str());
+      current_env_width_ = costmap_ros_->getCostmap()->getSizeInCellsX();
+      current_env_height_ = costmap_ros_->getCostmap()->getSizeInCellsY();
     }
     catch(SBPL_Exception *e){
       ROS_ERROR("SBPL encountered a fatal exception: %s", e->what());
@@ -240,12 +250,58 @@ void SBPLLatticePlanner::publishStats(int solution_cost, int solution_size,
   stats_publisher_.publish(stats);
 }
 
+unsigned char SBPLLatticePlanner::computeCircumscribedCost() {
+  unsigned char result = 0;
+
+  if (!costmap_ros_) {
+    ROS_ERROR("Costmap is not initialized");
+    return 0;
+  }
+
+  // check if the costmap has an inflation layer
+  for(std::vector<boost::shared_ptr<costmap_2d::Layer> >::const_iterator layer = costmap_ros_->getLayeredCostmap()->getPlugins()->begin();
+      layer != costmap_ros_->getLayeredCostmap()->getPlugins()->end();
+      ++layer) {
+    boost::shared_ptr<costmap_2d::InflationLayer> inflation_layer = boost::dynamic_pointer_cast<costmap_2d::InflationLayer>(*layer);
+    if (!inflation_layer) continue;
+
+    result = costMapCostToSBPLCost(inflation_layer->computeCost(costmap_ros_->getLayeredCostmap()->getCircumscribedRadius() / costmap_ros_->getCostmap()->getResolution()));
+  }
+  return result;
+}
+
 bool SBPLLatticePlanner::makePlan(const geometry_msgs::PoseStamped& start,
                                  const geometry_msgs::PoseStamped& goal,
                                  std::vector<geometry_msgs::PoseStamped>& plan){
   if(!initialized_){
     ROS_ERROR("Global planner is not initialized");
     return false;
+  }
+
+  bool do_init = false;
+  if (current_env_width_ != costmap_ros_->getCostmap()->getSizeInCellsX() ||
+      current_env_height_ != costmap_ros_->getCostmap()->getSizeInCellsY()) {
+    ROS_INFO("Costmap dimensions have changed from (%d x %d) to (%d x %d), reinitializing sbpl_lattice_planner.",
+             current_env_width_, current_env_height_,
+             costmap_ros_->getCostmap()->getSizeInCellsX(), costmap_ros_->getCostmap()->getSizeInCellsY());
+    do_init = true;
+  }
+  else if (footprint_ != costmap_ros_->getRobotFootprint()) {
+    ROS_INFO("Robot footprint has changed, reinitializing sbpl_lattice_planner.");
+    do_init = true;
+  }
+  else if (circumscribed_cost_ != computeCircumscribedCost()) {
+    ROS_INFO("Cost at circumscribed radius has changed, reinitializing sbpl_lattice_planner.");
+    do_init = true;
+  }
+
+  if (do_init) {
+    initialized_ = false;
+    delete planner_;
+    planner_ = NULL;
+    delete env_;
+    env_ = NULL;
+    initialize(name_, costmap_ros_);
   }
 
   plan.clear();
