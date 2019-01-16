@@ -1,0 +1,33 @@
+ros-melodic-sbpl-lattice-planner (0.3.2-0stretch) stretch; urgency=high
+
+  * Reinit on map size, footprint and costmap changes
+  * Add warning when cost_scaling_factor is too large
+    Also see #33 <https://github.com/ros-planning/navigation_experimental/issues/33>.
+  * Fix example config for TF2 (#30 <https://github.com/ros-planning/navigation_experimental/issues/30>)
+  * sbpl_lattice_planner: Add missing DEPENDS SBPL
+  * Contributors: Jonathan Meyer, Martin Günther
+
+ -- Martin Günther <martin.guenther@dfki.de>  Tue, 15 Jan 2019 23:00:00 -0000
+
+ros-melodic-sbpl-lattice-planner (0.3.1-0stretch) stretch; urgency=high
+
+
+
+ -- Martin Günther <martin.guenther@dfki.de>  Tue, 04 Sep 2018 22:00:00 -0000
+
+ros-melodic-sbpl-lattice-planner (0.3.0-0stretch) stretch; urgency=high
+
+  * sbpl_lattice_planner: Update to tf2, add dependency
+  * Use non deprecated pluginlib macro + headers
+  * Contributors: Martin Günther
+
+ -- Martin Günther <martin.guenther@dfki.de>  Mon, 03 Sep 2018 22:00:00 -0000
+
+ros-melodic-sbpl-lattice-planner (0.2.0-0stretch) stretch; urgency=high
+
+  * Initial release into indigo, kinetic, lunar and melodic
+  * Contributors: Martin Günther, David V. Lu!!, Dave Hershberger, E. Gil Jones, Eitan Marder-Eppstein, Felix Widmaier, Johannes Meyer, Jon Binney, Vincent Rabaud, Austin Hendrix
+
+ -- Martin Günther <martin.guenther@dfki.de>  Sun, 02 Sep 2018 22:00:00 -0000
+
+
