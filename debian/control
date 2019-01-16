@@ -1,0 +1,12 @@
+Source: ros-kinetic-twist-recovery
+Section: misc
+Priority: extra
+Maintainer: Martin Günther <martin.guenther@dfki.de>
+Build-Depends: debhelper (>= 9.0.0), ros-kinetic-base-local-planner, ros-kinetic-catkin, ros-kinetic-costmap-2d, ros-kinetic-geometry-msgs, ros-kinetic-nav-core, ros-kinetic-pluginlib
+Homepage: http://wiki.ros.org/twist_recovery
+Standards-Version: 3.9.2
+
+Package: ros-kinetic-twist-recovery
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-kinetic-base-local-planner, ros-kinetic-costmap-2d, ros-kinetic-geometry-msgs, ros-kinetic-nav-core, ros-kinetic-pluginlib
+Description: A recovery behavior that performs a particular used-defined twist.
