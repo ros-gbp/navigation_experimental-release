@@ -1,3 +1,34 @@
+## navigation_experimental (kinetic) - 0.2.2-1
+
+The packages in the `navigation_experimental` repository were released into the `kinetic` distro by running `/usr/bin/bloom-release navigation_experimental --rosdistro kinetic` on `Tue, 15 Oct 2019 11:44:07 -0000`
+
+These packages were released:
+- `assisted_teleop`
+- `goal_passer`
+- `navigation_experimental`
+- `pose_base_controller`
+- `pose_follower`
+- `sbpl_lattice_planner`
+- `sbpl_recovery`
+- `twist_recovery`
+
+Version of package(s) in repository `navigation_experimental`:
+
+- upstream repository: https://github.com/ros-planning/navigation_experimental.git
+- release repository: https://github.com/ros-gbp/navigation_experimental-release.git
+- rosdistro version: `0.2.1-0`
+- old version: `0.2.1-0`
+- new version: `0.2.2-1`
+
+Versions of tools used:
+
+- bloom version: `0.8.0`
+- catkin_pkg version: `0.4.13`
+- rosdep version: `0.16.1`
+- rosdistro version: `0.7.5`
+- vcstools version: `0.1.42`
+
+
 ## navigation_experimental (indigo) - 0.2.1-0
 
 The packages in the `navigation_experimental` repository were released into the `indigo` distro by running `/usr/bin/bloom-release navigation_experimental --rosdistro indigo` on `Wed, 16 Jan 2019 14:12:48 -0000`
