@@ -1,0 +1,22 @@
+ros-kinetic-goal-passer (0.2.2-1xenial) xenial; urgency=high
+
+  * Add READMEs
+  * Contributors: Martin Günther
+
+ -- Martin Günther <martin.guenther@dfki.de>  Mon, 14 Oct 2019 22:00:00 -0000
+
+ros-kinetic-goal-passer (0.2.1-1xenial) xenial; urgency=high
+
+  * Use non deprecated pluginlib macro + headers
+  * Contributors: Martin Günther
+
+ -- Martin Günther <martin.guenther@dfki.de>  Tue, 15 Jan 2019 23:00:00 -0000
+
+ros-kinetic-goal-passer (0.2.0-1xenial) xenial; urgency=high
+
+  * Initial release into indigo, kinetic, lunar and melodic
+  * Contributors: Martin Günther, David V. Lu!!, Dave Hershberger, Jon Binney, Rein Appeldoorn, Eitan Marder-Eppstein
+
+ -- Martin Günther <martin.guenther@dfki.de>  Sun, 02 Sep 2018 22:00:00 -0000
+
+
