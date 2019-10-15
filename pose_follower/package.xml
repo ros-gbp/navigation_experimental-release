@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>pose_follower</name>
-  <version>0.3.2</version>
+  <version>0.3.3</version>
   <description>
     A implementation of a local planner that attempts to follow a plan as closely as possible.
   </description>
@@ -16,6 +16,7 @@
   
   <depend>base_local_planner</depend>
   <depend>costmap_2d</depend>
+  <depend>dynamic_reconfigure</depend>
   <depend>nav_core</depend>
   <depend>nav_msgs</depend>
   <depend>pluginlib</depend>
