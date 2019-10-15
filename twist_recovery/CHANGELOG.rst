@@ -2,6 +2,11 @@
 Changelog for package twist_recovery
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.2.2 (2019-10-15)
+------------------
+* Add READMEs
+* Contributors: Martin Günther
+
 0.2.1 (2019-01-16)
 ------------------
 * Use non deprecated pluginlib macro + headers
