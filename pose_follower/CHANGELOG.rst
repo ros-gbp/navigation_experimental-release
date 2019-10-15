@@ -2,7 +2,7 @@
 Changelog for package pose_follower
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.2.2 (2019-10-15)
+0.3.3 (2019-10-15)
 ------------------
 * Add dynamic reconfigure to pose_follower (`#40 <https://github.com/ros-planning/navigation_experimental/issues/40>`_)
   Similar to the other available local planners, this commit adds dynamic reconfigure to pose_follower. In addition to this, the collision_planner parameters (used for detecting illegal trajectory) have been moved to the `PoseFollower/collision_planner` namespace.
@@ -14,12 +14,20 @@ Changelog for package pose_follower
 * Add READMEs
 * Contributors: Martin Günther, Pavel Shumejko
 
-0.2.1 (2019-01-16)
+0.3.2 (2019-01-16)
 ------------------
 * max rotation vel in in-place rotation limited (`#27 <https://github.com/ros-planning/navigation_experimental/issues/27>`_)
-* Add visualization of global plan (`#26 <https://github.com/ros-planning/navigation_experimental/issues/26>`_)
-* Use non deprecated pluginlib macro + headers
+* pose_follower: Add visualization of global plan (`#26 <https://github.com/ros-planning/navigation_experimental/issues/26>`_)
 * Contributors: Martin Günther, Pavel, sumejko92
+
+0.3.1 (2018-09-05)
+------------------
+
+0.3.0 (2018-09-04)
+------------------
+* Convert to TF2 + new navigation API (for melodic)
+* Use non deprecated pluginlib macro + headers
+* Contributors: Martin Günther
 
 0.2.0 (2018-09-03)
 ------------------
