@@ -1,1 +1,1 @@
-{"trim": "", "base": "1fd143f", "trimbase": "", "parent": "debian/noetic/sbpl_lattice_planner", "previous": "12d12a6"}
+{"base": "de7ec6b", "parent": "debian/noetic/sbpl_lattice_planner", "previous": "c02d2d5", "trim": "", "trimbase": ""}
