@@ -1,11 +1,12 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.5.1)
+cmake_policy(SET CMP0048 NEW)
 project(sbpl_lattice_planner)
 
 ##############################################################################
 # Find dependencies
 ##############################################################################
 
-set(THIS_PACKAGE_ROS_DEPS roscpp costmap_2d nav_core pluginlib tf2
+set(THIS_PACKAGE_ROS_DEPS roscpp costmap_2d nav_core pluginlib tf tf2
   geometry_msgs nav_msgs)
 find_package(catkin REQUIRED COMPONENTS
   ${THIS_PACKAGE_ROS_DEPS} message_generation)
