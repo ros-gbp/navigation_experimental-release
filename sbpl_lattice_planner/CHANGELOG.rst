@@ -2,7 +2,7 @@
 Changelog for package sbpl_lattice_planner
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.3.5 (2022-03-07)
+0.4.0 (2022-03-07)
 ------------------
 * Add option to publish the sbpl footprint plan (`#58 <https://github.com/ros-planning/navigation_experimental/issues/58>`_)
 * Contributors: Lotfi Zeghmi, Martin Günther
