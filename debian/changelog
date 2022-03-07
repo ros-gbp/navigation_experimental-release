@@ -1,0 +1,51 @@
+ros-melodic-sbpl-recovery (0.3.5-1bionic) bionic; urgency=high
+
+
+
+ -- Martin Günther <martin.guenther@dfki.de>  Sun, 06 Mar 2022 23:00:00 -0000
+
+ros-melodic-sbpl-recovery (0.3.4-1bionic) bionic; urgency=high
+
+  * Initial release into noetic
+  * Set cmake_policy CMP0048 to fix warning
+  * Contributors: Martin Günther
+
+ -- Martin Günther <martin.guenther@dfki.de>  Thu, 18 Jun 2020 22:00:00 -0000
+
+ros-melodic-sbpl-recovery (0.3.3-1bionic) bionic; urgency=high
+
+  * Add READMEs
+  * Contributors: Martin Günther
+
+ -- Martin Günther <martin.guenther@dfki.de>  Mon, 14 Oct 2019 22:00:00 -0000
+
+ros-melodic-sbpl-recovery (0.3.2-1bionic) bionic; urgency=high
+
+  * Fix some includes
+  * Contributors: Martin Günther
+
+ -- Martin Günther <martin.guenther@dfki.de>  Tue, 15 Jan 2019 23:00:00 -0000
+
+ros-melodic-sbpl-recovery (0.3.1-1bionic) bionic; urgency=high
+
+  * sbpl_recovery: Ignore SBPL compile warning
+  * Contributors: Martin Günther
+
+ -- Martin Günther <martin.guenther@dfki.de>  Tue, 04 Sep 2018 22:00:00 -0000
+
+ros-melodic-sbpl-recovery (0.3.0-1bionic) bionic; urgency=high
+
+  * Convert to TF2 + new navigation API (for melodic)
+  * Use non deprecated pluginlib macro + headers
+  * Contributors: Martin Günther
+
+ -- Martin Günther <martin.guenther@dfki.de>  Mon, 03 Sep 2018 22:00:00 -0000
+
+ros-melodic-sbpl-recovery (0.2.0-1bionic) bionic; urgency=high
+
+  * Initial release into indigo, kinetic, lunar and melodic
+  * Contributors: Martin Günther, David V. Lu!!, Dave Hershberger, Jon Binney, Vincent Rabaud, Eitan Marder-Eppstein
+
+ -- Martin Günther <martin.guenther@dfki.de>  Sun, 02 Sep 2018 22:00:00 -0000
+
+
