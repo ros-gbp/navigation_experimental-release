@@ -2,6 +2,14 @@
 Changelog for package twist_recovery
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.3.5 (2022-03-07)
+------------------
+
+0.3.4 (2020-06-19)
+------------------
+* Initial release into noetic* Set cmake_policy CMP0048 to fix warning
+* Contributors: Martin Günther
+
 0.3.3 (2019-10-15)
 ------------------
 * Add READMEs
