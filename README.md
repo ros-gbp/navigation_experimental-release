@@ -1,3 +1,34 @@
+## navigation_experimental (noetic) - 0.4.0-1
+
+The packages in the `navigation_experimental` repository were released into the `noetic` distro by running `/usr/bin/bloom-release navigation_experimental --rosdistro noetic -y` on `Mon, 07 Mar 2022 09:36:35 -0000`
+
+These packages were released:
+- `assisted_teleop`
+- `goal_passer`
+- `navigation_experimental`
+- `pose_base_controller`
+- `pose_follower`
+- `sbpl_lattice_planner`
+- `sbpl_recovery`
+- `twist_recovery`
+
+Version of package(s) in repository `navigation_experimental`:
+
+- upstream repository: https://github.com/ros-planning/navigation_experimental.git
+- release repository: https://github.com/ros-gbp/navigation_experimental-release.git
+- rosdistro version: `0.3.4-1`
+- old version: `0.3.4-1`
+- new version: `0.4.0-1`
+
+Versions of tools used:
+
+- bloom version: `0.10.7`
+- catkin_pkg version: `0.4.24`
+- rosdep version: `0.21.0`
+- rosdistro version: `0.8.3`
+- vcstools version: `0.1.42`
+
+
 ## navigation_experimental (melodic) - 0.3.5-1
 
 The packages in the `navigation_experimental` repository were released into the `melodic` distro by running `/usr/bin/bloom-release navigation_experimental --rosdistro melodic -y` on `Mon, 07 Mar 2022 09:32:59 -0000`
