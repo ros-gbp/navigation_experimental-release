@@ -1,1 +1,1 @@
-{"trim": "", "base": "f36f337", "trimbase": "", "parent": "debian/noetic/pose_base_controller", "previous": "d16f1b9"}
+{"base": "ef8fe87", "parent": "debian/noetic/pose_base_controller", "previous": "903ba17", "trim": "", "trimbase": ""}
