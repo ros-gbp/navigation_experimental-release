@@ -1,0 +1,12 @@
+Source: ros-melodic-pose-follower
+Section: misc
+Priority: optional
+Maintainer: Martin Günther <martin.guenther@dfki.de>
+Build-Depends: debhelper (>= 9.0.0), ros-melodic-base-local-planner, ros-melodic-catkin, ros-melodic-costmap-2d, ros-melodic-dynamic-reconfigure, ros-melodic-nav-core, ros-melodic-nav-msgs, ros-melodic-pluginlib, ros-melodic-roscpp, ros-melodic-tf2-geometry-msgs, ros-melodic-tf2-ros
+Homepage: http://wiki.ros.org/pose_follower
+Standards-Version: 3.9.2
+
+Package: ros-melodic-pose-follower
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-melodic-base-local-planner, ros-melodic-costmap-2d, ros-melodic-dynamic-reconfigure, ros-melodic-nav-core, ros-melodic-nav-msgs, ros-melodic-pluginlib, ros-melodic-roscpp, ros-melodic-tf2-geometry-msgs, ros-melodic-tf2-ros
+Description: A implementation of a local planner that attempts to follow a plan as closely as possible.
