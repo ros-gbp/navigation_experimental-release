@@ -1,0 +1,13 @@
+Source: ros-melodic-assisted-teleop
+Section: misc
+Priority: optional
+Maintainer: Martin Günther <martin.guenther@dfki.de>
+Build-Depends: debhelper (>= 9.0.0), libeigen3-dev, ros-melodic-actionlib, ros-melodic-angles, ros-melodic-base-local-planner, ros-melodic-catkin, ros-melodic-costmap-2d, ros-melodic-filters, ros-melodic-geometry-msgs, ros-melodic-message-filters, ros-melodic-move-base-msgs, ros-melodic-pluginlib, ros-melodic-roscpp, ros-melodic-roslib, ros-melodic-sensor-msgs, ros-melodic-tf2-ros
+Homepage: http://wiki.ros.org/assisted_teleop
+Standards-Version: 3.9.2
+
+Package: ros-melodic-assisted-teleop
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libeigen3-dev, ros-melodic-actionlib, ros-melodic-angles, ros-melodic-base-local-planner, ros-melodic-costmap-2d, ros-melodic-filters, ros-melodic-geometry-msgs, ros-melodic-message-filters, ros-melodic-move-base-msgs, ros-melodic-pluginlib, ros-melodic-roscpp, ros-melodic-roslib, ros-melodic-sensor-msgs, ros-melodic-tf2-ros
+Description: The assisted_teleop node subscribes to a desired trajectory topic (geometry_msgs/Twist) and uses TrajectoryPlannerROS to find a valid trajectory close to the desired trajectory before republishing.
+ Useful for filtering teleop commands while avoiding obstacles. This package also contains LaserScanMaxRangeFilter, which is a LaserScan filter plugin that takes max range values in a scan and turns them into valid values that are slightly less than max range.
