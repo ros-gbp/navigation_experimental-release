@@ -1,0 +1,12 @@
+Source: ros-noetic-navigation-experimental
+Section: misc
+Priority: optional
+Maintainer: Martin Günther <martin.guenther@dfki.de>
+Build-Depends: debhelper (>= 9.0.0), ros-noetic-catkin
+Homepage: http://wiki.ros.org/navigation_experimental
+Standards-Version: 3.9.2
+
+Package: ros-noetic-navigation-experimental
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-noetic-assisted-teleop, ros-noetic-goal-passer, ros-noetic-pose-base-controller, ros-noetic-pose-follower, ros-noetic-sbpl-lattice-planner, ros-noetic-sbpl-recovery, ros-noetic-twist-recovery
+Description: A collection of navigation plugins and tools: Various recovery behaviors, local and global planner plugins for move_base, a teleop filter for obstacle avoidance, a simple control-based move_base replacement etc.
