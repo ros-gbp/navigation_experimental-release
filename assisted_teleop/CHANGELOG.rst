@@ -2,13 +2,11 @@
 Changelog for package assisted_teleop
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.4.1 (2022-08-24)
+0.3.6 (2022-08-24)
 ------------------
 
-0.4.0 (2022-03-07)
+0.3.5 (2022-03-07)
 ------------------
-* Use non-deprecated filter_base header
-* Contributors: Martin Günther
 
 0.3.4 (2020-06-19)
 ------------------
